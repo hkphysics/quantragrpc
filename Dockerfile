@@ -36,9 +36,9 @@ RUN     cd root && \
         make install
 
 RUN     cd /root && \
-        wget https://github.com/lballabio/QuantLib/releases/download/QuantLib-v1.22/QuantLib-1.22.tar.gz && \
-        tar -zxvf QuantLib-1.22.tar.gz && \
-        cd QuantLib-1.22 && \
+        wget https://github.com/lballabio/QuantLib/releases/download/v1.36/QuantLib-1.36.tar.gz && \
+        tar -zxvf QuantLib-1.36.tar.gz && \
+        cd QuantLib-1.36 && \
         ./configure --enable-std-pointers && \
         make -j$((`nproc`*2)) && \
         make install && \
