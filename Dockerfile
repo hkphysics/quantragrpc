@@ -30,10 +30,10 @@ RUN     cd root && \
         -DgRPC_ABSL_PROVIDER=package \
         -DgRPC_SSL_PROVIDER=package \
         -DBUILD_SHARED_LIBS=ON \
-        -DCMAKE_INSTALL_PREFIX=/root/grpc/install \
         ../.. && \
         make -j$((`nproc`*2)) && \
-        make install
+        make install && \
+	rm -rf /root/grpc
 
 RUN     cd /root && \
         wget https://github.com/lballabio/QuantLib/releases/download/v1.36/QuantLib-1.36.tar.gz && \
@@ -42,7 +42,9 @@ RUN     cd /root && \
         ./configure --enable-std-pointers && \
         make -j$((`nproc`*2)) && \
         make install && \
-        ldconfig
+        ldconfig && \
+	cd .. && \
+	rm -rf QuantLib-1.36 QuantLib-1.36.tar.gz
 
 # Quantra
 RUN     cd /root && \
