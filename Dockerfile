@@ -56,3 +56,5 @@ RUN     cd /root && \
         cmake ../ && \ 
         make -j$((`nproc`*2))
 
+COPY ./start.sh /root/quantragrpc
+CMD /bin/bash /root/quantragrpc/start.sh
